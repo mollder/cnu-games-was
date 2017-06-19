@@ -74,4 +74,9 @@ public class CommentService {
     public int getParentDepth(CommentDTO commentDTO) {
         return commentRepository.findByIdx(commentDTO.getParentIdx()).getDepth();
     }
+
+    public void noRecommendComment(int idx){
+        Comment comment = commentRepository.findByIdx(idx);
+        comment.setBadCount(comment.getBadCount()+1);
+    }
 }
